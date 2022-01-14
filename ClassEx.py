@@ -1,10 +1,11 @@
 import re
-mysentence='''
-My name is Pamela ATABONG. I am 20 years old and reading Computer Engineering in UBA.
-My school is College of Technology and my level is Level 300.
-All the mates of Level300 love programming in Python and they use Regular Expressions
+mysentence = '''
+My mother has phone number +2376 51 42 52 27
+my father has phone number +2376.99.65.60.49
+my sister has phone number +2376-99-35-71-80
+my brother's number number +237659992528
 '''
-pattern=re.compile(r'[lL]evel.\d\d\d\b')
-matches=pattern.finditer(mysentence)
+pattern = re.compile(r'[+2376]((| |.|-)([0-9]{2})){6}')
+matches = pattern.finditer(mysentence)
 for match in matches:
     print(match)
