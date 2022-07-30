@@ -9,14 +9,19 @@ pdfname = 'Charle Severance'
 pdfFileOdj = open(pdfname+'.pdf', 'rb')
 pdfReader = PyPDF2.PdfFileReader(pdfFileOdj)
 pdftext = PyPDF2.PdfFileWriter()
+text = ''
 for i in range(0, pdfReader.numPages):
     pageObj = pdfReader.getPage(i)
-    print(type(pdftext.addPage(pageObj)))
+    pdftextF = pageObj.extract_text()
+    text = text + pdftextF
+
+pdfFileOdj.close()
 
 
 
 language = 'en'
-VoiceObj = gTTS(text = pdftextF, lang=language)
-VoiceObj.save(pdfname+'.mp3')
+VoiceObj = gTTS(text = text, lang=language)
+VoiceObj.save('output.mp3')
+os.system('vlc output.mp3')
 
 

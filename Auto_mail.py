@@ -1,6 +1,7 @@
 from email import message
 import smtplib
 
+
 try:
     smtpObj = smtplib.SMTP('smtp.gmail.com', 587) #Creating an SMTP object
     smtpObj.ehlo()  #Sending a hello message to smtp server
@@ -8,7 +9,7 @@ try:
     password = '' # google password
     sender_email = "example_sender@gmail.com" #sender's email
     reciever_email = 'example_reciever@gmail.com' #reciever's email
-    msg = 'Hello, This message was sent using python' #message to be sent
+    msg = input('Write your message: ') #message to be sent
     smtpObj.login(sender_email, password) #login to your account
     #send a message to ndekadji....
     smtpObj.sendmail(sender_email, reciever_email, msg)
